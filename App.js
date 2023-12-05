@@ -1,12 +1,13 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
+import Naviagtion from './components/Navigation';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Hello akash</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaProvider>
+      <Naviagtion/>
+    </SafeAreaProvider>
   );
 }
 
