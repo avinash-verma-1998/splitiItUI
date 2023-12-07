@@ -2,7 +2,7 @@ import { StyleSheet, Text, View } from "react-native";
 import Naviagtion from "./components/Navigation";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NavigationContainer } from "@react-navigation/native";
-import { Group } from "./components/Group";
+import { Group } from "./components/Groups/Group";
 
 const Stack = createNativeStackNavigator();
 

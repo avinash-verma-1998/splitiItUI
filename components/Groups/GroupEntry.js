@@ -1,21 +1,22 @@
 import * as React from "react";
 import { StyleSheet, TouchableOpacity, View } from "react-native";
-import { Avatar, Icon, Surface, Text } from "react-native-paper";
+import { Avatar, Icon, List, Surface, Text } from "react-native-paper";
 
-const GroupEntry = ({ name, details, onPress }) => {
+const GroupEntry = ({ name, details, onPress, last }) => {
+  const style = last ? [styles.group, styles.last] : styles.group;
   return (
-    <TouchableOpacity onPress={onPress} style={styles.group}>
-      <Avatar.Text
-        style={styles.avatar}
-        label={name.slice(0, 2).toUpperCase()}
-      />
-      <View style={styles.content}>
-        <View>
-          <Text style={styles.header}>{name}</Text>
-          <Text style={styles.details}>{details}</Text>
-        </View>
-      </View>
-    </TouchableOpacity>
+    <List.Item
+      style={style}
+      onPress={onPress}
+      title={() => <Text style={styles.header}>{name}</Text>}
+      description={() => <Text style={styles.details}>{details}</Text>}
+      left={() => (
+        <Avatar.Text
+          style={styles.avatar}
+          label={name.slice(0, 2).toUpperCase()}
+        />
+      )}
+    />
   );
 };
 
@@ -46,6 +47,9 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     borderRadius: 20,
     padding: 15,
+  },
+  last: {
+    paddingBottom: 300,
   },
 });
 
