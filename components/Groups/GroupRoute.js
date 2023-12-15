@@ -26,7 +26,7 @@ export const GroupRoute = () => {
       </View>
       <View style={styles.list}>
         <FlatList
-          data={[0, 2, 3, 4, 5, 6, 7, 8, 0]}
+          data={[2, 3, 4, 5, 6, 7, 8, 0]}
           renderItem={({ item }) => {
             return (
               <GroupEntry

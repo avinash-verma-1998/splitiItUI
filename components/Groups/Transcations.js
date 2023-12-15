@@ -29,11 +29,12 @@ export const Expense = ({ date, name, total, title, paid, share, last }) => {
   );
 };
 
-export const Payment = ({ payer, payee, amount, date, last }) => {
+export const Payment = ({ payer, payee, amount, date, last, onPress }) => {
   const style = last ? [styles.transcation, styles.last] : styles.transcation;
   return (
     <>
       <List.Item
+        onPress={onPress}
         style={style}
         title="Payment"
         left={() => <Text style={styles.date}>{date}</Text>}

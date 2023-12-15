@@ -1,8 +1,13 @@
+import { useState } from "react";
 import { SafeAreaView, ScrollView, StyleSheet, View } from "react-native";
-import { Button, Divider, Text } from "react-native-paper";
+import { Button, Divider, Portal, Text } from "react-native-paper";
 import { Expense, Payment } from "./Transcations";
+import { useNavigation } from "@react-navigation/native";
+import PayementView from "../pages/PayementView";
 
 export const Group = ({ route }) => {
+  const [visible, setPaymentVisible] = useState(false);
+  const [paymentData, setPaymentData] = useState({});
   const { groupName, groupStatus } = route.params;
   const expenseProp = {
     date: "04 sep",
@@ -12,12 +17,13 @@ export const Group = ({ route }) => {
     paid: false,
     share: "20.00",
   };
-  const payemntProp = {
+  const payementProp = {
     date: "04 sep",
     payer: "avinash",
     payee: "narru",
     amount: "1000",
   };
+  const navigator = useNavigation();
   return (
     <SafeAreaView style={styles.group}>
       <View style={styles.header}>
@@ -29,55 +35,37 @@ export const Group = ({ route }) => {
         <Button mode="contained-tonal">Settle up</Button>
         <Button mode="contained-tonal">Balances</Button>
       </View>
+      <PayementView
+        visible={visible}
+        setVisible={setPaymentVisible}
+        data={paymentData}
+      />
       <ScrollView style={styles.scroll}>
         <Expense {...expenseProp} />
-        <Payment {...payemntProp} />
+        <Payment
+          onPress={() => {
+            setPaymentVisible(true);
+            setPaymentData(payementProp);
+          }}
+          {...payementProp}
+        />
         <Expense {...expenseProp} />
-        <Payment {...payemntProp} />
-        <Payment {...payemntProp} />
-        <Payment {...payemntProp} />
-        <Payment {...payemntProp} />
-        <Payment {...payemntProp} />
-        <Payment {...payemntProp} />
-        <Payment {...payemntProp} />
-        <Payment {...payemntProp} />
-        <Payment {...payemntProp} />
+        <Payment {...payementProp} />
         <Expense {...expenseProp} />
-        <Payment {...payemntProp} />
         <Expense {...expenseProp} />
-        <Payment {...payemntProp} />
-        <Payment {...payemntProp} />
-        <Payment {...payemntProp} />
-        <Payment {...payemntProp} />
-        <Payment {...payemntProp} />
-        <Payment {...payemntProp} />
-        <Payment {...payemntProp} />
-        <Payment {...payemntProp} />
-        <Payment {...payemntProp} />
         <Expense {...expenseProp} />
-        <Payment {...payemntProp} />
         <Expense {...expenseProp} />
-        <Payment {...payemntProp} />
-        <Payment {...payemntProp} />
-        <Payment {...payemntProp} />
-        <Payment {...payemntProp} />
-        <Payment {...payemntProp} />
-        <Payment {...payemntProp} />
-        <Payment {...payemntProp} />
-        <Payment {...payemntProp} />
-        <Payment {...payemntProp} />
         <Expense {...expenseProp} />
-        <Payment {...payemntProp} />
         <Expense {...expenseProp} />
-        <Payment {...payemntProp} />
-        <Payment {...payemntProp} />
-        <Payment {...payemntProp} />
-        <Payment {...payemntProp} />
-        <Payment {...payemntProp} />
-        <Payment {...payemntProp} />
-        <Payment {...payemntProp} />
-        <Payment {...payemntProp} />
-        <Payment {...payemntProp} />
+        <Expense {...expenseProp} />
+        <Expense {...expenseProp} />
+        <Expense {...expenseProp} />
+        <Expense {...expenseProp} />
+        <Expense {...expenseProp} />
+        <Expense {...expenseProp} />
+        <Expense {...expenseProp} />
+        <Expense {...expenseProp} />
+
         <Expense {...expenseProp} last />
       </ScrollView>
     </SafeAreaView>
