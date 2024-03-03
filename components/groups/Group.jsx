@@ -1,9 +1,10 @@
 import { useState } from "react";
-import { SafeAreaView, ScrollView, StyleSheet, View } from "react-native";
-import { Button, Divider, Portal, Text } from "react-native-paper";
-import { Expense, Payment } from "./Transcations";
+import { FlatList, SafeAreaView, ScrollView, StyleSheet, View } from "react-native";
+import { Button, Divider, Text } from "react-native-paper";
+import { Expense, Payment, Transcations } from "./Transcations";
 import { useNavigation } from "@react-navigation/native";
 import PayementView from "../pages/PayementView";
+import GroupEntry from "./GroupEntry";
 
 export const Group = ({ route }) => {
   const [visible, setPaymentVisible] = useState(false);
@@ -40,13 +41,31 @@ export const Group = ({ route }) => {
         setVisible={setPaymentVisible}
         data={paymentData}
       />
-      <ScrollView style={styles.scroll}>
+<View
+style={{flex:1}}
+>
+         <FlatList
+          data={[{type:'E',props:expenseProp},{type:'E',props:expenseProp},{type:'P',props:payementProp},{type:'E',props:expenseProp},{type:'P',props:payementProp},{type:'P',props:payementProp},{type:'P',props:payementProp},{type:'P',props:payementProp}
+          ,{type:'E',props:expenseProp},{type:'E',props:expenseProp},{type:'E',props:expenseProp},{type:'E',props:expenseProp},{type:'E',props:expenseProp},{type:'E',props:expenseProp},{type:'E',props:expenseProp},{type:'P',props:{...payementProp,last:true}}]}
+          renderItem={({ item }) => {
+            return (
+              <Transcations
+            
+              
+              type={item.type}
+              props={{...item.props,  onPress:() => {
+                setPaymentVisible(true);
+                setPaymentData(payementProp);
+              }}}
+              />
+              );
+            }}
+            />
+            </View>
+      {/* <ScrollView style={styles.scroll}>
         <Expense {...expenseProp} />
         <Payment
-          onPress={() => {
-            setPaymentVisible(true);
-            setPaymentData(payementProp);
-          }}
+          
           {...payementProp}
         />
         <Expense {...expenseProp} />
@@ -67,7 +86,7 @@ export const Group = ({ route }) => {
         <Expense {...expenseProp} />
 
         <Expense {...expenseProp} last />
-      </ScrollView>
+      </ScrollView> */}
     </SafeAreaView>
   );
 };
@@ -75,6 +94,7 @@ export const Group = ({ route }) => {
 const styles = StyleSheet.create({
   group: {
     display: "flex",
+    flex:1
   },
   header: {
     paddingLeft: 10,

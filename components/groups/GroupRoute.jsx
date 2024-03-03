@@ -1,13 +1,11 @@
 import React from "react";
-import GroupEntry from "./GroupEntry.js";
+import GroupEntry from "./GroupEntry.jsx";
 import {
   FlatList,
-  ScrollView,
-  StatusBar,
   StyleSheet,
   View,
 } from "react-native";
-import { Status } from "../Status.js";
+import { Status } from "../utils/Status.jsx";
 import { Button } from "react-native-paper";
 import {} from "@react-navigation/native-stack";
 import { useNavigation } from "@react-navigation/native";

@@ -45,6 +45,7 @@ export const Payment = ({ payer, payee, amount, date, last, onPress }) => {
   );
 };
 
+export const Transcations = ({type,props}) => type === 'P'? <Payment {...props}/>:<Expense {...props}/>
 const styles = StyleSheet.create({
   transcation: { paddingLeft: 15 },
   date: {
@@ -61,6 +62,6 @@ const styles = StyleSheet.create({
     color: "red",
   },
   last: {
-    paddingBottom: 300,
+    paddingBottom: 100,
   },
 });

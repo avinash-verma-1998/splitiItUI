@@ -1,11 +1,11 @@
 import { StyleSheet, Text, View } from "react-native";
-import Naviagtion from "./components/Navigation";
+import Naviagtion from "./components/pages/Navigation";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NavigationContainer } from "@react-navigation/native";
-import { Group } from "./components/Groups/Group";
+import { Group } from "./components/groups/Group";
 import { PayementView } from "./components/pages/PayementView";
 import { PaperProvider } from "react-native-paper";
-import { CreateGroup } from "./components/Groups/CreateGroup";
+import { CreateGroup } from "./components/groups/CreateGroup";
 
 const Stack = createNativeStackNavigator();
 

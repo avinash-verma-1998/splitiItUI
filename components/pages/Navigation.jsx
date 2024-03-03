@@ -1,7 +1,7 @@
 import * as React from "react";
 import { BottomNavigation, Text } from "react-native-paper";
 import Icon from "react-native-vector-icons/FontAwesome";
-import { GroupRoute } from "./Groups/GroupRoute";
+import { GroupRoute } from "../groups/GroupRoute";
 const GroupIcon = () => <Icon name="users" size={20} />;
 const SpliteeIcon = () => <Icon name="user-o" size={20} />;
 const ProfileIcon = () => <Icon name="user" size={20} />;
