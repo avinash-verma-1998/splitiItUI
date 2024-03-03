@@ -5,6 +5,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { Group } from "./components/Groups/Group";
 import { PayementView } from "./components/pages/PayementView";
 import { PaperProvider } from "react-native-paper";
+import { CreateGroup } from "./components/Groups/CreateGroup";
 
 const Stack = createNativeStackNavigator();
 
@@ -24,6 +25,9 @@ export default function App() {
         <Stack.Navigator initialRouteName="Home">
           <Stack.Screen name="Group">
             {(props) => <Group {...props} />}
+          </Stack.Screen>
+          <Stack.Screen name="CreateGroup">
+            {(props) => <CreateGroup {...props} />}
           </Stack.Screen>
           <Stack.Screen name="Home" component={Naviagtion} />
           <Stack.Screen name="payment-view">

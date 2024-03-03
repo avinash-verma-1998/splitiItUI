@@ -41,7 +41,13 @@ export const GroupRoute = () => {
           }}
         />
       </View>
-      <Button mode="elevated" col compact style={styles.addButton}>
+      <Button
+        mode="elevated"
+        col
+        compact
+        style={styles.addButton}
+        onPress={() => navigation.navigate("CreateGroup")}
+      >
         Add Entry
       </Button>
     </View>
